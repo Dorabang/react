@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <!-- React -->
+  <script src="./react.production.min.js"></script>
+  <script src="./react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    /*
+    // *********** react createElement used ***********
+
+        const h3 = React.createElement(
+      "h3",
+      {
+        id: "title",
+        onMouseEnter: () => console.log("Mouse enter"),
+      },
+      "Hello, I'm a span."
+    );
+    const btn = React.createElement(
+      "button",
+      {
+        style: { backgroundColor: "tomato", padding: "10px 20px" },
+        onClick: () => console.log("i'm clicked"),
+      },
+      "Click me"
+    );
+    const container = React.createElement("div", null, [h3, btn]);
+    ReactDOM.render(container, root);
+    */
+
+    const root = document.querySelector("#root");
+    let counter = 0;
+    function countUp() {
+      counter = counter + 1;
+      render();
+    }
+
+    function render() {
+      ReactDOM.render(<Container />, root);
+    }
+
+    const Container = () => (
+      <div>
+        <h3>Total Clicks: {counter}</h3>
+        <button onClick={countUp}>click</button>
+      </div>
+    );
+    render();
+  </script>
+</html>
