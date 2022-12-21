@@ -38,7 +38,8 @@
     const container = React.createElement("div", null, [h3, btn]);
     ReactDOM.render(container, root);
     */
-
+    /*
+    // React 기초
     const root = document.querySelector("#root");
     let counter = 0;
     function countUp() {
@@ -57,5 +58,24 @@
       </div>
     );
     render();
+    */
+    // React 심화
+    const root = document.querySelector("#root");
+
+    function App() {
+      // [0, f] f = 초기값을 변경할 수 있는 함수
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1);
+      };
+      return (
+        <div>
+          <h3>Total Clicks: {counter}</h3>
+          <button onClick={onClick}>click</button>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, root);
   </script>
 </html>
