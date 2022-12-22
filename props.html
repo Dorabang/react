@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>props</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <!-- React -->
+  <script src="./react.production.min.js"></script>
+  <script src="./react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    function Btn({ text, changeValue }) {
+      return (
+        <button
+          onClick={changeValue}
+          style={{
+            padding: "10px 20px",
+            color: "white",
+            background: "tomato",
+            border: 0,
+            borderRadius: "5px",
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+
+    const MemorizedBtn = React.memo(Btn);
+
+    function App() {
+      const [value, setValue] = React.useState("Save Changes");
+      const changeValue = () => setValue("Revert Changes");
+      return (
+        <div>
+          <MemorizedBtn text={value} changeValue={changeValue} />
+          <MemorizedBtn text="Continue" />
+        </div>
+      );
+    }
+
+    const root = document.querySelector("#root");
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
